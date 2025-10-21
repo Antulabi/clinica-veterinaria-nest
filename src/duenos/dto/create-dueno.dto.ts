@@ -1,3 +1,4 @@
+// DTO (Data Trabsfer Object) sirve para como vamos a recibir los datos desde el backend
 import { IsNotEmpty, IsOptional, IsPhoneNumber, IsEmail } from 'class-validator';
 
 export class CreateDuenoDto {
