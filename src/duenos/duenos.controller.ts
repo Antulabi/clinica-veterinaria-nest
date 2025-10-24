@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { DuenosService } from './duenos.service';
 import { CreateDuenoDto } from './dto/create-dueno.dto';
-
+// Controlador maneja las rutas y las peticiones HTTP
 @Controller('duenos')
 export class DuenosController {
   constructor(private readonly duenosService: DuenosService) {}

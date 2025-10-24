@@ -1,3 +1,4 @@
+// Controler.ts maneja las rutas y las solicitudes HTTP entrantes.
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
 

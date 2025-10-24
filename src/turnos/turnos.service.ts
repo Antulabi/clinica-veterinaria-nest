@@ -8,6 +8,7 @@ export interface Turno {
   fechaHora: string; // ISO
   motivo?: string;
   estado: 'agendado' | 'cancelado' | 'finalizado';
+  // createdAt es la fecha de creación del turno
   createdAt: string;
 }
 

@@ -74,13 +74,14 @@ export class TratamientosService {
     return resultado;
   }
 
-  // 2) vacunas próximas -> listar dueños cuya mascota tiene nextDue (vacuna) dentro de X días (por defecto 30)
+  // 2) vacunas próximas -> lista dueños cuya mascota tiene nextDue (vacuna) dentro de
+  //  X días (por defecto 30)
   vacunasProximas(dias = 30): { duenoId: string; duenoNombre: string; mascotaId: string; mascotaNombre: string; nextDue: string }[] {
     const resultado: { duenoId: string; duenoNombre: string; mascotaId: string; mascotaNombre: string; nextDue: string }[] = [];
     const hoy = new Date();
     const limite = new Date(hoy.getTime() + dias * 24 * 3600 * 1000);
 
-    // para cada mascota, buscar el registro de vacuna con nextDue más cercano en el futuro
+    // para cada mascota, busca el registro de vacuna con nextDue más cercano en el futuro
     const mascotas = this.mascotasService.listar();
     for (const m of mascotas) {
       const vacunas = this.tratamientos

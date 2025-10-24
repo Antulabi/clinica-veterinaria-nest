@@ -1,3 +1,4 @@
+// modules.ts agrupa los diferentes modulos de la aplicacion.
 import { Module } from '@nestjs/common';
 import { DuenosModule } from './duenos/duenos.module';
 import { MascotasModule } from './mascotas/mascotas.module';

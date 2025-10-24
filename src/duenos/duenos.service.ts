@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { generarId } from '../common/utils/id.util';
-
+// el service.ts es el encargado de la logica de negocio y manejo de datos.
 export interface Dueno {
   id: string;
   nombre: string;

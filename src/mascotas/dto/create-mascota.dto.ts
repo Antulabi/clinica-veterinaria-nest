@@ -5,7 +5,7 @@ export class CreateMascotaDto {
   nombre!: string;
 
   @IsNotEmpty()
-  especie!: string; // e.g., 'perro', 'gato'
+  especie!: string; // ejemplo., 'perro', 'gato','cocodrilo'
 
   @IsOptional()
   raza?: string;
