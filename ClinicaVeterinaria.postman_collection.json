@@ -1,0 +1,219 @@
+{
+  "info": {
+    "name": "Clinica Veterinaria - API NestJS (en memoria)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "vet-api-collection-memory"
+  },
+  "item": [
+    {
+      "name": "Dueños",
+      "item": [
+        {
+          "name": "Crear dueño",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Juan P\\u00e9rez\",\n  \"email\": \"juan.perez@mail.com\",\n  \"telefono\": \"+5491122334455\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/duenos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "duenos"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Listar dueños",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:3000/duenos"
+          }
+        },
+        {
+          "name": "Obtener dueño por ID",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:3000/duenos/:id"
+          }
+        },
+        {
+          "name": "Actualizar dueño",
+          "request": {
+            "method": "PUT",
+            "url": "http://localhost:3000/duenos/:id"
+          }
+        },
+        {
+          "name": "Eliminar dueño",
+          "request": {
+            "method": "DELETE",
+            "url": "http://localhost:3000/duenos/:id"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Mascotas",
+      "item": [
+        {
+          "name": "Crear mascota",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Firulais\",\n  \"especie\": \"perro\",\n  \"raza\": \"labrador\",\n  \"sexo\": \"M\",\n  \"duenoId\": \"REEMPLAZAR_POR_ID_DUENO\"\n}"
+            },
+            "url": "http://localhost:3000/mascotas"
+          }
+        },
+        {
+          "name": "Listar mascotas",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:3000/mascotas"
+          }
+        },
+        {
+          "name": "Obtener mascota por ID",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:3000/mascotas/:id"
+          }
+        },
+        {
+          "name": "Actualizar mascota",
+          "request": {
+            "method": "PUT",
+            "url": "http://localhost:3000/mascotas/:id"
+          }
+        },
+        {
+          "name": "Eliminar mascota",
+          "request": {
+            "method": "DELETE",
+            "url": "http://localhost:3000/mascotas/:id"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Turnos",
+      "item": [
+        {
+          "name": "Agendar turno",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"mascotaId\": \"REEMPLAZAR_POR_ID_MASCOTA\",\n  \"fechaHora\": \"2025-10-12T15:30:00Z\"\n}"
+            },
+            "url": "http://localhost:3000/turnos"
+          }
+        },
+        {
+          "name": "Listar turnos",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:3000/turnos"
+          }
+        },
+        {
+          "name": "Obtener turno por ID",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:3000/turnos/:id"
+          }
+        },
+        {
+          "name": "Cancelar turno",
+          "request": {
+            "method": "POST",
+            "url": "http://localhost:3000/turnos/:id/cancelar"
+          }
+        },
+        {
+          "name": "Finalizar turno",
+          "request": {
+            "method": "POST",
+            "url": "http://localhost:3000/turnos/:id/finalizar"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tratamientos",
+      "item": [
+        {
+          "name": "Registrar tratamiento",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"mascotaId\": \"REEMPLAZAR_POR_ID_MASCOTA\",\n  \"tipo\": \"vacuna\",\n  \"descripcion\": \"Vacuna antirr\\u00e1bica\",\n  \"fecha\": \"2025-10-08\",\n  \"nextDue\": \"2026-10-08\"\n}"
+            },
+            "url": "http://localhost:3000/tratamientos"
+          }
+        },
+        {
+          "name": "Listar tratamientos",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:3000/tratamientos"
+          }
+        },
+        {
+          "name": "Historial por mascota",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:3000/tratamientos/mascota/:mascotaId"
+          }
+        },
+        {
+          "name": "Clientes para chequeo anual",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:3000/tratamientos/consultas/chequeo-anual"
+          }
+        },
+        {
+          "name": "Vacunas próximas",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:3000/tratamientos/consultas/vacunas-proximas?dias=30"
+          }
+        }
+      ]
+    }
+  ]
+}
