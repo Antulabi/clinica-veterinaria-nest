@@ -35,6 +35,7 @@ export default tseslint.config(
       '@typescript-eslint/no-unsafe-argument': 'warn'
     },
   },
+  // Prettier rules esto es forzar el formato de Prettier para que no haya conflictos.
   "prettier/prettier",[
     "error",
     {
