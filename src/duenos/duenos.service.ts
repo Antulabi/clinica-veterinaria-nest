@@ -1,5 +1,6 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, Inject, forwardRef, BadRequestException } from '@nestjs/common';
 import { generarId } from '../common/utils/id.util';
+import { MascotasService } from '../mascotas/mascotas.service'; // <--- Importar
 // el service.ts es el encargado de la logica de negocio y manejo de datos.
 export interface Dueno {
   id: string;
@@ -12,6 +13,11 @@ export interface Dueno {
 @Injectable()
 export class DuenosService {
   private duenos: Dueno[] = [];
+constructor(
+    // Inyectar MascotasService usando forwardRef
+    @Inject(forwardRef(() => MascotasService))
+    private readonly mascotasService: MascotasService,
+  ) {}  
 
   listar(): Dueno[] {
     return this.duenos;
@@ -51,7 +57,15 @@ actualizar(id: string, cambios: Partial<Dueno>): Dueno {
     return d;
   }
 
-  eliminar(id: string): void {
+eliminar(id: string): void {
+    // --- LÓGICA MODIFICADA ---
+    // 1. Validar si el dueño tiene mascotas
+    const mascotas = this.mascotasService.listarPorDueno(id);
+    if (mascotas.length > 0) {
+      throw new BadRequestException('No se puede eliminar un dueño con mascotas asociadas.');
+    }
+
+    // 2. Si no tiene, proceder a eliminar
     const idx = this.duenos.findIndex(x => x.id === id);
     if (idx === -1) throw new NotFoundException('Dueño no encontrado');
     this.duenos.splice(idx, 1);

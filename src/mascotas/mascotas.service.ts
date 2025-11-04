@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
+import { Injectable, NotFoundException, BadRequestException, Inject, forwardRef } from '@nestjs/common';
 import { generarId } from '../common/utils/id.util';
 import { DuenosService } from '../duenos/duenos.service';
 
@@ -16,7 +16,11 @@ export interface Mascota {
 export class MascotasService {
   private mascotas: Mascota[] = [];
 
-  constructor(private readonly duenosService: DuenosService) {}
+  constructor(
+    // Actualizar la inyección para que sea circular
+    @Inject(forwardRef(() => DuenosService))
+    private readonly duenosService: DuenosService,
+  ) {}
 
   listar(): Mascota[] {
     return this.mascotas;
