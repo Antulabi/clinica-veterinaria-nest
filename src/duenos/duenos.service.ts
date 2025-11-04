@@ -34,9 +34,19 @@ export class DuenosService {
     if (!d) throw new NotFoundException('Dueño no encontrado');
     return d;
   }
-
-  actualizar(id: string, cambios: Partial<Dueno>): Dueno {
+// actualizar dueño.
+actualizar(id: string, cambios: Partial<Dueno>): Dueno {
     const d = this.obtenerPorId(id);
+
+    // si el id viene en los cambios, los eliminamos para que no se puedan modificar.
+    if (cambios.id) {
+      delete cambios.id;
+    }
+    // si el createdAt viene en los cambios, lo eliminamos
+    if (cambios.createdAt) {
+      delete cambios.createdAt;
+    }
+
     Object.assign(d, cambios);
     return d;
   }

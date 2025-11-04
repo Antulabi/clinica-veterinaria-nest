@@ -45,10 +45,20 @@ export class MascotasService {
     return this.mascotas.filter(m => m.duenoId === duenoId);
   }
 
-  actualizar(id: string, cambios: Partial<Mascota>): Mascota {
+actualizar(id: string, cambios: Partial<Mascota>): Mascota {
     const m = this.obtenerPorId(id);
+
+  // lo mismo que en dueños, pero validando el duenoId si viene en los cambios.
+    if (cambios.id) {
+      delete cambios.id;
+    }
+    // lo mismo que en dueños, pero validando el createdAt si viene en los cambios.
+    if (cambios.createdAt) {
+      delete cambios.createdAt;
+    }
+
     if (cambios.duenoId) {
-      // validar nuevo dueño
+      
       this.duenosService.obtenerPorId(cambios.duenoId);
     }
     Object.assign(m, cambios);
